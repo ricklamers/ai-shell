@@ -48,15 +48,17 @@ Shell-AI can be configured through environment variables or a config file locate
 
 ### Environment Variables
 
-- `OPENAI_API_KEY`: (Required) Your OpenAI API key
+- `OPENAI_API_KEY`: (Required) Your OpenAI API key, leave empty if you use ollama
 - `GROQ_API_KEY`: (Required if using Groq) Your Groq API key
 - `OPENAI_MODEL`: The OpenAI model to use (default: "gpt-3.5-turbo")
 - `SHAI_SUGGESTION_COUNT`: Number of suggestions to generate (default: 3)
 - `SHAI_SKIP_CONFIRM`: Skip command confirmation when set to "true"
 - `SHAI_SKIP_HISTORY`: Skip writing to shell history when set to "true"
-- `SHAI_API_PROVIDER`: Choose between "openai", "azure", or "groq" (default: "groq")
+- `SHAI_API_PROVIDER`: Choose between "openai", "ollama", "azure", or "groq" (default: "groq")
 - `SHAI_TEMPERATURE`: Controls randomness in the output (default: 0.05). Lower values (e.g., 0.05) make output more focused and deterministic, while higher values (e.g., 0.7) make it more creative and varied.
 - `CTX`: Enable context mode when set to "true" (Note: outputs will be sent to the API)
+- `OLLAMA_MODEL`: The Ollama model to use (default: "phi3.5")
+- `OLLAMA_API_BASE`: The Ollama endpoint to use (default: "http://localhost:11434/v1/")
 
 ### Config File Example
 
@@ -69,6 +71,18 @@ Shell-AI can be configured through environment variables or a config file locate
 }
 ```
 
+
+### Config Example for Ollama
+```json
+   {
+   "OPENAI_API_KEY":"",
+   "SHAI_SUGGESTION_COUNT": "3",
+   "SHAI_API_PROVIDER": "ollama",
+   "OLLAMA_MODEL": "phi3.5",
+   "OLLAMA_API_BASE": "http://localhost:11434/v1/",
+   "SHAI_TEMPERATURE": "0.05"
+   }
+```
 The application will read from this file if it exists, overriding any existing environment variables.
 
 Run the application after setting these configurations.
